@@ -1,5 +1,6 @@
 package com.sumin.gamescore;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -15,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (savedInstanceState != null) {
+            score1 = savedInstanceState.getInt("score1");
+            score2 = savedInstanceState.getInt("score2");
+        }
 
         TextView textViewScore1 = findViewById(R.id.textViewScore1);
         TextView textViewScore2 = findViewById(R.id.textViewScore2);
@@ -35,5 +41,17 @@ public class MainActivity extends AppCompatActivity {
                 textViewScore2.setText(String.valueOf(++score2));
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("score1", score1);
+        outState.putInt("score2", score2);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
