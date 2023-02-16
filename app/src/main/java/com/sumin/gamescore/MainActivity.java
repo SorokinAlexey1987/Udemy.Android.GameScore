@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,19 +27,9 @@ public class MainActivity extends AppCompatActivity {
         textViewScore1.setText(String.valueOf(score1));
         textViewScore2.setText(String.valueOf(score2));
 
-        textViewScore1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textViewScore1.setText(String.valueOf(++score1));
-            }
-        });
+        textViewScore1.setOnClickListener(view -> textViewScore1.setText(String.valueOf(++score1)));
 
-        textViewScore2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textViewScore2.setText(String.valueOf(++score2));
-            }
-        });
+        textViewScore2.setOnClickListener(view -> textViewScore2.setText(String.valueOf(++score2)));
     }
 
     @Override
